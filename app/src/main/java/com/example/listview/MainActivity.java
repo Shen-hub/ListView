@@ -24,6 +24,73 @@ public class MainActivity extends AppCompatActivity {
     Button buttonSortName;
     Button buttonSortPhone;
     Button buttonSortSex;
+
+    public void OnClickSortName (View view) {
+        setContentView(R.layout.activity_main);
+        listView = findViewById(R.id.list);
+        buttonSortName = findViewById(R.id.buttonSortName);
+        buttonSortPhone = findViewById(R.id.buttonSortPhone);
+        buttonSortSex = findViewById(R.id.buttonSortSex);
+        InputStream stream = getResources().openRawResource(R.raw.users);
+        Gson gson = new Gson();
+        final User[] users_arr = gson.fromJson(new InputStreamReader(stream), User[].class);
+
+        Log.d("mytag", "users: " + users_arr.length);
+
+        final ArrayList<User> users = new ArrayList<>();
+        Collections.addAll(users, users_arr);
+        Collections.sort(users,new UserComp());
+
+        adapter = new UserListAdapter(this, users);
+        adapter.notifyDataSetChanged();
+
+        listView.setAdapter(adapter);
+    }
+
+    public void OnClickSortSex (View view) {
+        setContentView(R.layout.activity_main);
+        listView = findViewById(R.id.list);
+        buttonSortName = findViewById(R.id.buttonSortName);
+        buttonSortPhone = findViewById(R.id.buttonSortPhone);
+        buttonSortSex = findViewById(R.id.buttonSortSex);
+        InputStream stream = getResources().openRawResource(R.raw.users);
+        Gson gson = new Gson();
+        final User[] users_arr = gson.fromJson(new InputStreamReader(stream), User[].class);
+
+        Log.d("mytag", "users: " + users_arr.length);
+
+        final ArrayList<User> users = new ArrayList<>();
+        Collections.addAll(users, users_arr);
+        Collections.sort(users,new SexComp());
+
+        adapter = new UserListAdapter(this, users);
+        adapter.notifyDataSetChanged();
+
+        listView.setAdapter(adapter);
+    }
+
+    public void OnClickSortPhone (View view) {
+        setContentView(R.layout.activity_main);
+        listView = findViewById(R.id.list);
+        buttonSortName = findViewById(R.id.buttonSortName);
+        buttonSortPhone = findViewById(R.id.buttonSortPhone);
+        buttonSortSex = findViewById(R.id.buttonSortSex);
+        InputStream stream = getResources().openRawResource(R.raw.users);
+        Gson gson = new Gson();
+        final User[] users_arr = gson.fromJson(new InputStreamReader(stream), User[].class);
+
+        Log.d("mytag", "users: " + users_arr.length);
+
+        final ArrayList<User> users = new ArrayList<>();
+        Collections.addAll(users, users_arr);
+        Collections.sort(users,new PhoneComp());
+
+        adapter = new UserListAdapter(this, users);
+        adapter.notifyDataSetChanged();
+
+        listView.setAdapter(adapter);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +101,17 @@ public class MainActivity extends AppCompatActivity {
         buttonSortSex = findViewById(R.id.buttonSortSex);
         InputStream stream = getResources().openRawResource(R.raw.users);
         Gson gson = new Gson();
-        User[] users_arr = gson.fromJson(new InputStreamReader(stream), User[].class);
+        final User[] users_arr = gson.fromJson(new InputStreamReader(stream), User[].class);
 
         Log.d("mytag", "users: " + users_arr.length);
 
-        ArrayList<User> users = new ArrayList<>();
+        final ArrayList<User> users = new ArrayList<>();
         Collections.addAll(users, users_arr);
-        Collections.sort(users,new UserComp());
+        //Collections.sort(users,new UserComp());
 
         adapter = new UserListAdapter(this, users);
         adapter.notifyDataSetChanged();
 
         listView.setAdapter(adapter);
-
     }
 }

@@ -11,17 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSortName"
-        android:text="Сортировать по имени" />
+        android:text="Сортировать по имени"
+        android:onClick="OnClickSortName"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSortSex"
-        android:text="Сортировать по полу" />
+        android:text="Сортировать по полу"
+        android:onClick="OnClickSortSex" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSortPhone"
-        android:text="Сортировать по телефону" />
+        android:text="Сортировать по телефону"
+        android:onClick="OnClickSortPhone"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
